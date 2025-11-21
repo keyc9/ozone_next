@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./scss/style.scss";
 import localFont from 'next/font/local'
-import Header from "./ui/header";
+import HeaderComponent from "./ui/HeaderComponent";
 import Cart from "./ui/Cart";
 
 export const metadata: Metadata = {
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 const GTEestiProText = localFont({
   src: [
     {
-      path: './fonts/EestiBold.OTF',
+      path: './fonts/EestiBold.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: './fonts/EestiRegular.OTF',
+      path: './fonts/EestiRegular.woff2',
       weight: '500',
       style: 'normal',
     },
@@ -29,14 +29,14 @@ export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
-      <Header />
+    <html lang="en">
       <body className={GTEestiProText.className}>
+        <HeaderComponent />
         <main>
-        {children}
+          {children}
         </main>
+        <Cart />
       </body>
-      <Cart />
     </html>
   );
 }
