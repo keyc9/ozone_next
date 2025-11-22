@@ -3,6 +3,7 @@ import "./scss/style.scss";
 import localFont from 'next/font/local'
 import HeaderComponent from "./ui/HeaderComponent";
 import Cart from "./ui/Cart";
+import CartProvider from "./providers/CartProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,11 +32,13 @@ export default function RootLayout({ children, }: Readonly<{
   return (
     <html lang="en">
       <body className={GTEestiProText.className}>
-        <HeaderComponent />
-        <main>
-          {children}
-        </main>
-        <Cart />
+        <CartProvider>
+          <HeaderComponent />
+          <main>
+            {children}
+          </main>
+          <Cart />
+        </CartProvider>
       </body>
     </html>
   );
